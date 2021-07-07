@@ -1,0 +1,27 @@
+[
+{
+    "fields": {
+        "name": "chatusers",
+        "permissions": []
+    },
+    "model": "auth.group",
+    "pk": 1
+},
+{
+    "fields": {
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2019-12-03T15:28:21.284",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$Hb3BMhCGwJxd$OQM/dMUuECb4+2CG1gCXw0SOmNlHwcy15Q7yPV+Bvm4=",
+        "email": "",
+        "date_joined": "2019-12-03T15:27:44.506"
+    },
+    "model": "auth.user",
+    "pk": 1
+},

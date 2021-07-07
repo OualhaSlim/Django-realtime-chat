@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body_block %}
+  <div class="main-w3layouts wrapper">
+    {% if registered %}
+    
+    {% else %}
+      <h1 style="color:#E1E7E7">Register Here</h1>
+    {% endif %}
+    <div class="main-agileinfo">
+      <div class="agileits-top">
+        {% if registered %}
+          <h1 style="color:#E1E7E7">Thank you for registering! <a href="{% url 'user_login' %}" style="color:#E1E7E7"> Login Now!</h1>
+        {% else %}
+          <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            <input type="submit" name="" value="Register">
+          </form>
+          
+        {% endif %}
+      </div>
+    </div>
+    <ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>  
+  </div>
+{% endblock %}

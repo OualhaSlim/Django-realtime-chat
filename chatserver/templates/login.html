@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to the chat app</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- Custom Theme files -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+<!-- //web font -->
+</head>
+<body>
+	<!-- main -->
+	<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+	{# Django Home Link / Admin Link / Register Link#}
+          <li><a class="navbar-brand" href="{% url 'index' %}">Chat application</a></li>
+          <li><a class="navbar-link" href="{% url 'register' %}">Register</a></li>     
+          {# Some logic on what to display for last item#}
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'chat' %}">go to chat</a></li>
+          {% else %}
+            <li><a class="navbar-link" href="{% url 'user_login' %}">Login</a></li>
+          {% endif %} 
+        </ul>
+      {% if user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" style="margin-right: 12em;">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ request.user.username }} <span class="caret"></span></a>
+            <div class="dropdown-menu" style="padding:1em;">
+              <form class="form" action="{% url 'logout' %}" method="post">{% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                <input class="btn btn-success btn-block" type="submit" value="Logout">
+              <form>
+                <div>
+          </li>
+        </ul>
+          {% endif %}
+      </div>
+    </nav>
+	<div class="main-w3layouts wrapper">
+		<h1>SignIn</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="{% url 'user_login' %}" method="post">
+					{% csrf_token %}
+					{% if failed_login %}
+					<p> Invalid user name or password!</p>
+					{% endif %}
+					<input class="text" type="text" name="username" placeholder="Username" required>
+					<input class="text" type="password" name="password" placeholder="Password" required>
+					<div class="wthree-text">
+						
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="Login">
+				</form>
+				<p>Don't have an Account? <a href="{% url 'register' %}"> Register Now!</a></p>
+			</div>
+		</div>
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="">
+    
+    {% if user.is_authenticated %}
+        <h1 style="color:#E1E7E7;padding-top: 150px; ">Hello {{ user.username }} <br>
+        Welcome to the chat app !</h1>
+    {% else %}
+        <h1 style="color:#E1E7E7;padding-top: 150px; ">Welcome to the chat app !<br>
+        <a href="{% url 'register' %}" style="color:#E1E7E7"> <strong>Register</strong></a> or <a href="{% url 'user_login' %}"style="color:#E1E7E7"><strong> Login</strong></a> to join the chat group</h1>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
